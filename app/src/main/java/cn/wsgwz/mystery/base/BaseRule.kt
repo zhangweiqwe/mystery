@@ -8,10 +8,13 @@ import android.util.DisplayMetrics
 
 abstract class BaseRule {
 
+    open val DIM:Int = 1024
+    open val DIM1 = DIM - 1
 
-    abstract fun RD(i:Int,j:Int):Int
-    abstract fun GR(i:Int,j:Int):Int
-    abstract fun BL(i:Int,j:Int):Int
+    abstract fun RD(i: Int, j: Int): Int
+    abstract fun GR(i: Int, j: Int): Int
+    abstract fun BL(i: Int, j: Int): Int
+
     companion object {
         private fun prepareHandler(s: String): String {
             return if (s.length == 1) {
@@ -19,7 +22,20 @@ abstract class BaseRule {
             } else s
         }
 
-        fun draw(canvas: Canvas, displayMetrics: DisplayMetrics,baseRule: BaseRule) {
+        fun _sq(x: Double): Double {
+            return ((x) * (x))
+        }
+
+        fun _cb(x: Double): Double {
+            return Math.abs((x) * (x) * (x))
+
+        }
+
+        fun _cr(x: Double): Char {
+            return Util.getUnsignedChar(x);
+        }
+
+        fun draw(canvas: Canvas, displayMetrics: DisplayMetrics, baseRule: BaseRule) {
             val paint = Paint()
             for (j in 0 until displayMetrics.widthPixels)
                 for (i in 0 until displayMetrics.heightPixels) {

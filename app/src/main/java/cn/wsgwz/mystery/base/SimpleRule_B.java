@@ -7,6 +7,7 @@ public class SimpleRule_B extends BaseRule  {
     @Override
     public int RD(int i, int j) {
         char c[][] = new char[1024][1024];
+
         return 0;
     }
 
